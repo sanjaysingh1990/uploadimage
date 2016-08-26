@@ -13,5 +13,15 @@ class DataBean {
     }
 
     private String imageurl;
+
+    public int getViewtype() {
+        return viewtype;
+    }
+
+    public void setViewtype(int viewtype) {
+        this.viewtype = viewtype;
+    }
+
+    private int viewtype;
 }
 

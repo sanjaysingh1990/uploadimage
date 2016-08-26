@@ -83,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
-         adapter = new RVAdapter(dataBeen);
+         adapter = new RVAdapter(dataBeen,this);
+
         rv.setAdapter(adapter);
         // This method creates an ArrayList that has three Person objects
 // Checkout the project associated with this tutorial on Github if
@@ -120,8 +121,9 @@ public class MainActivity extends AppCompatActivity {
                     imagepath=imgDecodableString;
                     DataBean db=new DataBean();
                     db.setImageurl(imagepath);
+                    db.setViewtype(1);
                     dataBeen.add(db);
-                    adapter.notifyDataSetChanged();
+                    adapter.notifyItemChanged(dataBeen.size()-1);
 
                 }
                 }

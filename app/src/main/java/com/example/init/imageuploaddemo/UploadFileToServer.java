@@ -17,16 +17,19 @@ import java.net.URL;
 
  class UploadFileToServer extends AsyncTask<String, String, String>
 {
-    String FILE_UPLOAD_URL = "http://192.168.0.186/upload.php";
-
+    String FILE_UPLOAD_URL = "http://52.76.68.122/lnd/upload.php";
+    RVAdapter rv;
     DonutProgress donut_progress;
     File sourceFile;
     int totalSize=0;
     String imagepath="";
-    public UploadFileToServer(DonutProgress dp,String imagepath)
+    int pos=0;
+    public UploadFileToServer(DonutProgress dp,String imagepath,RVAdapter rvAdapter,int pos)
     {
         donut_progress=dp;
         this.imagepath=imagepath;
+        rv=rvAdapter;
+        this.pos=pos;
     }
     @Override
     protected void onPreExecute()
@@ -129,6 +132,7 @@ import java.net.URL;
         Log.e("Response", "Response from server: " + result);
         super.onPostExecute(result);
         donut_progress.setVisibility(View.GONE);
+        rv.callback(pos);
     }
 
 }
