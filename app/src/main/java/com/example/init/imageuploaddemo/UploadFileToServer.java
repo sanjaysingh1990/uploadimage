@@ -59,7 +59,6 @@ import java.net.URL;
 
         try
         {
-
             connection = (HttpURLConnection) new URL(FILE_UPLOAD_URL).openConnection();
 
             connection.setRequestMethod("POST");
