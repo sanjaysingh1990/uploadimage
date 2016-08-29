@@ -1,6 +1,10 @@
 package com.example.init.imageuploaddemo;
 
 import android.app.Application;
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -17,7 +21,7 @@ public class InitializeLib extends Application
 {
    public DisplayImageOptions options;
    public ImageLoader imageLoader ;
-
+   public int width,height;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -43,5 +47,14 @@ public class InitializeLib extends Application
                 .showImageForEmptyUri(R.mipmap.ic_launcher)
                 .showImageOnFail(R.mipmap.ic_launcher)
                 .showImageOnLoading(R.mipmap.ic_launcher).build();
+
+    //get screen width and height
+
+        WindowManager wm = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+         width = metrics.widthPixels;
+         height = metrics.heightPixels;
     }
 }

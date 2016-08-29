@@ -132,7 +132,7 @@ import java.net.URL;
         Log.e("Response", "Response from server: " + result);
         super.onPostExecute(result);
         donut_progress.setVisibility(View.GONE);
-        rv.callback(pos);
+        rv.callback(pos,result);
     }
 
 }
